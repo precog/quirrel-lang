@@ -1,0 +1,404 @@
+* {
+    border: 0;
+    list-style-type: none;
+    text-decoration: none;
+    position: relative;
+    outline: none;
+    margin: 0;
+    padding: 0;
+}
+
+body { background-color: #fff;
+    text-align: center;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+@font-face {
+    font-family: 'Abel';
+    src: url('fonts/abel-regular-webfont.eot');
+    src: url('fonts/abel-regular-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/abel-regular-webfont.woff') format('woff'), url('fonts/abel-regular-webfont.ttf') format('truetype'), url('fonts/abel-regular-webfont.svg#AbelRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Questrial';
+    src: url('fonts/questrial-regular-webfont.eot');
+    src: url('fonts/questrial-regular-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/questrial-regular-webfont.woff') format('woff'), url('fonts/questrial-regular-webfont.ttf') format('truetype'), url('fonts/questrial-regular-webfont.svg#') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Antic';
+    src: url('fonts/antic-regular-webfont.eot');
+    src: url('fonts/antic-regular-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/antic-regular-webfont.woff') format('woff'), url('fonts/antic-regular-webfont.ttf') format('truetype'), url('fonts/antic-regular-webfont.svg#AnticRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Rexlia';
+    src: url('fonts/rexlia_free-webfont.eot');
+    src: url('fonts/rexlia_free-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/rexlia_free-webfont.woff') format('woff'), url('fonts/rexlia_free-webfont.ttf') format('truetype'), url('fonts/rexlia_free-webfont.svg#RexliaFree') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+p {
+    font-size: 11pt;
+    font-family: Helvetica;
+    color: #9AB4CC;
+    line-height: normal;
+}
+
+a {
+    text-decoration: underline;
+    color: #000;
+    font-family: 'questrial';
+}
+
+h1 {
+    font-size: 20pt;
+    font-family: 'questrial';
+    color: #4D4D4D;
+    line-height: normal;
+    font-weight: normal;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.atrib-clear-left {
+    clear: left;
+    width: 0px;
+    height: 0px;
+}
+
+#page-header {
+    width: 100%;
+    height: 40px;
+    background-color: #000;
+    text-align: left;
+    position: fixed;
+    z-index: 1;
+}
+
+#header-content {
+    width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: left;
+}
+
+#header-logo {
+    background-image: url("../images/quirrel-logo.png");
+    width: 121px;
+    height: 23px;
+    top: 8px;
+}
+
+#header-nav-menu {
+    left: 242px;
+    text-align: center;
+    top: -23px;
+}
+
+#header-nav-menu ul li {
+    display: table;
+    float: left;
+}
+
+#header-nav-menu ul li:hover {
+}
+
+#header-nav-menu ul li a {
+    float: left;
+    margin-right: 1px;
+    width: 110px;
+    height: 28px;
+    background-color: #262626;
+    cursor: pointer;
+    font-size: 10pt;
+    padding-top: 12px;
+    color: #fff;
+}
+
+#header-nav-menu ul li a:hover {
+    background-color: #333333;
+    color: #8CC63F;
+    border-bottom: solid;
+    border-width: 4px;
+}
+
+#header-nav-menu ul li a.header-nav-menu-active {
+    background-color: #333333;
+    color: #8CC63F;
+    border-bottom: solid;
+    border-width: 4px;
+}
+
+#page-holder {
+    width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: left;
+    top: 40px;
+}
+
+#page-body {
+    width: 1200px;
+}
+
+#page-side-bar {
+    margin-top: 20px;
+    width: 200px;
+    background-color: #F2F2F2;
+    border-radius: 3px;
+    float: left;
+    border: solid;
+    border-width: 1px;
+    border-color: #E6E6E6;
+}
+
+#side-bar-logo {
+    width: 200px;
+    height: 260px;
+    background-image: url("../images/quirrellogo.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#side-bar-navigation {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#side-bar-navigation h1 {
+    padding-top: 0px;
+}
+
+#side-bar-navigation ul {
+  list-style-image: url(../images/side-bar-bullet.png);
+  padding-left: 20px;
+}
+
+#side-bar-navigation ul li a {
+    font-size: 10pt;
+    color: #666666;
+}
+
+#side-bar-navigation ul li a:hover {
+    font-size: 10pt;
+    color: #000;
+    text-decoration: underline;
+}
+
+#page-body-content {
+    margin-left: 20px;
+    margin-bottom: 60px;
+    width: 978px;
+    height: 500px;
+    border-radius: 3px;
+    float: left;
+}
+
+#page-body-text {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+#page-body-header {
+    width: 938px;
+    background-color: #F2F2F2;
+    border: solid;
+    border-width: 1px;
+    border-color: #E6E6E6;
+    background-image: -ms-linear-gradient(top, #F2F2F2 0%, #EDEDED 100%);
+    background-image: -moz-linear-gradient(top, #F2F2F2 0%, #EDEDED 100%);
+    background-image: -o-linear-gradient(top, #F2F2F2 0%, #EDEDED 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #F2F2F2), color-stop(1, #EDEDED));
+    background-image: -webkit-linear-gradient(top, #F2F2F2 0%, #EDEDED 100%);
+    background-image: linear-gradient(top, #F2F2F2 0%, #EDEDED 100%);
+}
+
+#page-body-header h1 {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 40px;
+    text-shadow: 0px 2px 0px #FFF;
+}
+
+#page-body-header h2 {
+    font-family: questrial;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #666666;
+    text-shadow: 0px 1px 0px #FFF;
+}
+
+#page-body-header h3 {
+    font-family: questrial;
+    padding-top: 10px;
+    padding-left: 20px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #999999;
+}
+
+#page-body-header a {
+    text-decoration: underline;
+    color: #8CC63F;
+}
+
+#page-body-header ul {
+    padding-left: 40px;
+    padding-top: 4px;
+    padding-bottom: 20px;
+}
+
+#page-body-header ul li {
+    font-family: Helvetica;
+    font-size: 10pt;
+    list-style-image: url(../images/side-bar-bullet.png);
+    padding-bottom: 2px;
+    letter-spacing: 1px;
+}
+
+.page-body-column {
+    width: 29.3%;
+    margin-right: 4%;
+    float: left;
+    padding-bottom: 20px;
+}
+
+.page-body-column-wide {
+    width: 96%;
+    margin-right: 4%;
+    float: left;
+    padding-bottom: 20px;
+}
+
+#page-body-section {
+    margin-bottom: 40px;
+}
+
+#page-body-section h1 {
+    padding-left: 20px;
+    font-size: 24px;
+    margin-bottom: 0px;
+    color: #8CC63F;
+}
+
+#page-body-section .page-body-column h1 {
+    padding-top: 0px;
+    padding-left: 20px;
+    font-size: 18px;
+    color: #000;
+}
+
+#page-body-section .page-body-column-wide h1 {
+    padding-top: 20px;
+    padding-left: 20px;
+    font-size: 18px;
+    color: #000;
+    text-decoration: underline;
+}
+
+#page-body-section .page-body-column p {
+    padding-left: 20px;
+    padding-bottom: 4px;
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: 1px;
+    line-height: 1.4;
+}
+
+#page-body-section .page-body-column-wide p {
+    padding-left: 20px;
+    padding-bottom: 4px;
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: 1px;
+    line-height: 1.4;
+}
+
+#page-body-section .page-body-column ul li, #page-body-section .page-body-column-wide ul li {
+    padding-top: 0px;
+    margin-left: 20px;
+}
+
+#page-body-section .page-body-column ul, #page-body-section .page-body-column-wide ul {
+    font-family: Helvetica;
+    font-size: 12pt;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    color: #808080;
+    letter-spacing: 1px;
+    line-height: 1.4;
+    list-style-image: url(../images/side-bar-bullet.png);
+}
+
+#page-body-section .page-body-column .body-code {
+    padding-top: 10px;
+}
+
+#page-body-section .page-body-column-wide .body-code {
+    padding-top: 4px;
+    padding-bottom: 20px;
+}
+
+#page-body-section .body-code p {
+    font-family: Courier;
+    font-size: 8pt;
+    color: #FCEE21;
+    background-color: #333333;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 6px;
+    -moz-box-shadow: 3px 3px 3px #B3B3B3;
+    -webkit-box-shadow: 3px 3px 3px #B3B3B3;
+    box-shadow: 3px 3px 3px #B3B3B3;
+    white-space: pre;
+}
+
+#page-footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 40px;
+    background-color: #000;
+}
+
+#footer-content {
+    width: 1200px;
+    text-align: right;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#footer-content p {
+    padding-top: 14px;
+    font-family: Helvetica;
+    font-size: 8pt;
+    color: #fff;
+}
+
+#footer-content a {
+    padding-top: 14px;
+    font-family: Helvetica;
+    font-size: 8pt;
+    color: #fff;
+    text-decoration: underline;
+}

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tutorial</title>
+        <link rel="shortcut icon" href="http://www.whatisquirrel.com/images/favorite-icon.ico" mce_href="http://www.whatisquirrel.com/images/favorite-icon.ico"/>
+        <link rel="stylesheet" type="text/css" href="css/innerpage.css">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+        <script type="text/javascript" src="js/default.js"></script>
+    </head>
+    <body>
+        <div id="page-header">
+	    <div id="header-content">
+		<div id="header-logo">
+		</div>
+		<div id="header-nav-menu">
+		    <ul>
+			<li><a href="index.html">overview</a></li>
+			<li><a class="header-nav-menu-active" href="tutorial.html">tutorial</a></li>
+			<li><a href="specification.html">specification</a></li>
+			<li><a href="reference.html">reference</a></li>
+			<li><a href="license.html">license</a></li>
+			<li><a href="about.html">about</a></li>
+		    </ul>
+		</div>
+	    </div>
+	    <div class="atrib-clear-left">
+	    </div>
+	</div>
+	<div id="page-holder">
+	    <div id="page-body">
+		<div id="page-side-bar">
+		    <div id="side-bar-logo">
+		    </div>
+		    <!--
+		    <div id="side-bar-navigation">
+			<h1>overview</h1>
+			<ul>
+			    <li><a href="#gettingstarted-link">getting started</a></li>
+			    <li><a href="#examples-link">examples</a></li>
+			    <li><a href="#download-link">download</a></li>
+			</ul>
+		    </div>
+		    -->
+		</div>
+		<div id="page-body-content">
+		    <div id="page-body-text">
+			<div id="page-body-header">
+			    <h1>Tutorial</h1>
+			    <h2>A brief tutorial that introduces you to all the concepts in Quirrel.</h2>
+			</div>
+			<div id="page-body-section">
+			    <h1 id="gettingstarted-link">getting started</h1>
+			    <div class="page-body-column-wide">
+				<h1>JSON</h1>
+			        <p>Quirrel has native support for JSON. You can create strings, numbers, booleans, arrays, and objects just like you do in JavaScript.</p>
+				<div class="body-code">
+				    <p>{name: "John", age: 29, gender: "male"}
+[{name: "John", age: 29, gender: "male"}]
+
+true
+[true]
+
+"hello world"
+["hello world"]</p>
+				</div>
+				<h1>NUMBERS</h1>
+			        <p>Quirrel is designed for analytics, so it has very good support for math. In fact, you can use Quirrel as a calculator.</p>
+				<div class="body-code">
+				    <p>5 + 2
+[7]
+
+8 * 2
+[16]</p>
+				</div>
+				
+				<p>Quirrel has an extensive built-in library of mathematical functions. Check the reference guide to see them all.</p>
+				
+				<h1>BOOLEANS</h1>
+			        <p>Quirrel supports equality and inequality operators, which result in boolean values. These operators are often used to filter sets of data (a topic covered later).</p>
+				<div class="body-code">
+				    <p>5 > 2
+[true]
+
+"foo" != "foo"
+[false]</p>
+				</div>
+				<p>The full list of equality/inequality operators includes = (equal), != (not equal), &lt; (less than), &gt; (greater than), and variants like &lt;= and &gt;=.</p>
+				<h1>VARIABLES</h1>
+			        <p>You can store intermediate results in variables to make your queries more readable. The final expression determines what is returned by the query.</p>
+				<div class="body-code">
+				    <p>total := 2 + 1
+total * 3
+[9]
+ 
+num := 4
+square := num * num
+square - 1
+[15]</p>
+				</div>
+				<h1>LOADING DATA</h1>
+			        <p>The most basic query you can do is to retrieve raw data. To do this, use the <em>load</em> function, and specify the path to load data from.</p>
+				<div class="body-code">
+				    <p>load(//payments)
+payments
+[{"date":1330497295803, "amount": 500.0, "recipients": ["research", "marketting"]}, ...]
+</p>
+				</div>
+				<p>The load function returns all the data stored at the specified path, even if the values have differing types or schemas.</p>
+				<h1>FILTERED DESCENT</h1>
+			        <p>Quirrel has direct support for JavaScript's <em>object dereference</em> and <em>array dereference</em> operators. These operations implicitly filter the dataset to those items that contain the specified field or array index.</p>
+				<div class="body-code">
+				    <p>payments := load(//payments)
+payments.date
+[1330404486064, 1330445714479, 1330577286058, ...]
+
+payments.recipients[0]
+["research", "operations", ...]
+				    </p>
+				</div>
+				<p>The descent operators filter the data set to those items that contain the specified field or array index.</p>
+				<h1>REDUCTIONS</h1>
+			        <p>Quirrel can reduce sets of data into a single value. There are many built-in reductions.</p>
+				<div class="body-code">
+				    <p>count(load(//payments))
+[92323]
+
+mean(load(//payments).amount)
+[23.91]
+
+sum(load(//payments).amount)
+[2207442.93]
+				    </p>
+				</div>
+				<p>See the Quirrel reference guide for documentation on all supported reductions.</p>
+				<h1>SETS OF EVENTS</h1>
+			        <p>In Quirrel, every expression is a set of events. An event is just something that has an identity and a JSON value. Every value you store gets its own unique identity. Identities are hidden (you'll never see them), but they are used internally by Quirrel.</p>
+				<h1>IDENTITY MATCHING</h1>
+			        <p>All functions and operators in Quirrel operate on sets of events, not values. When you add two sets (for example), Quirrel finds the events whose identities match, and adds their values, to produce a new set.</p>
+				<div class="body-code">
+				    <p>orders := load(//orders)
+orders.subTotal + orders.subTotal * orders.taxRate + orders.shipping + orders.handling
+[134.31905, 156.09615, 31.30669, 94.3478, ...]
+				    </p>
+				</div>
+				<p>The set-oriented nature of Quirrel lets you perform bulk operations without having to iterate over elements. This property is also what makes it possible to efficiently distribute Quirrel queries across clusters of machines.</p>
+				<h1>VALUES</h1>
+			        <p>Quirrel implicitly converts values like "0.10" or "male" into sets containing a single event. These events have so-called <em>bottom identity</em>, which matches against all identities.</p>
+				<div class="body-code">
+				    <p>payments := load(//payments)
+payments.amount * 0.10
+[39.560, 47.780, 25.3480, ...]
+				    </p>
+				</div>
+				<p>In this example, all values in the <em>payments.amount</em> set are multiplied by 0.10, because the 0.10 event has bottom identity and therefore matches with all events in the "payments.amount" set.</p>
+				<h1>FILTERING</h1>
+			        <p>Quirrel has a "where" operator which allows you to filter one set by another set of boolean values.</p>
+				<div class="body-code">
+				    <p>payments := load(//payments)
+count(payments where payments.amount > 10.00)
+[2932]
+
+users := load(//users)
+segment := users.age > 19 & users.age < 53 & users.income > 60000
+count(users where segment)
+[74]
+				    </p>
+				</div>
+				<p>The <em>where</em> operator in Quirrel is not magical -- it's simply a function from two sets (one of which is a boolean set) to one set. You can store the boolean set in a variable if you want to use it multiple times.</p>
+				<h1>CHAINING</h1>
+			        <p>Quirrel lets you chain expressions together without any limitations. This lets you easily perform multi-step analytical queries.</p>
+				<div class="body-code">
+				    <p>pageViews := load(//pageViews)
+bound := 1.5 * stdDev(pageViews.duration)
+avg := mean(pageViews.duration)
+longPageViews := pageViews where pageViews.duration > (avg + bound)
+longPageViews.userId
+
+[12352, 12354, 12360, ...]
+				    </p>
+				</div>
+				<p>This query identifies users who spend an unusually long amount of time viewing a page.</p>
+				<h1>USER-DEFINED FUNCTIONS</h1>
+			        <p>Quirrel lets you create user-defined functions, which map from one or more values to sets. These functions are often used to perform analytical queries on a group of related values. They can also be used to factor out logic that's common across different queries.</p>
+				<div class="body-code">
+				    <p>pageViewsForUser('userId) := pageViews where pageViews.userId = 'userId
+				    </p>
+				</div>
+				<p>This function returns all page views for a given userId.</p>
+				<h1>FULLY-APPLIED FUNCTIONS</h1>
+			        <p>You can call functions with parameters. This has the same effect as substituting the parameters into the body of the function.</p>
+				<div class="body-code">
+				    <p>pageViews := load(//pageViews)
+pageViewsForUser('userId) := pageViews where pageViews.userId = 'userId
+pageViewsForUser(12345)
+
+[{"userId":12345,"duration":57},{"userId":12345,"duration":161},{"userId":12345,"duration":7}, ...]
+				    </p>
+				</div>
+				<h1>PARTIALLY-APPLIED FUNCTIONS, PART I</h1>
+			        <p>In many cases, Quirrel knows how to compute the range of values for a parameter. If you call the function without supplying a value, Quirrel will evaluate the function at all possible values and merge the results into a single set.</p>
+				<div class="body-code">
+				    <p>pageViews := load(//pageViews)
+pageViewsForUser('userId) := 
+  {userId: 'userId, meanPageView: mean(pageViews.duration where pageViews.userId = 'userId)}
+pageViewsForUser
+
+[{"userId":12359,"meanPageView":83},{"userId":12347,"meanPageView":42}, ...]
+				    </p>
+				</div>
+				<p>This query results in average page view durations for all users.</p>
+				<h1>PARTIALLY-APPLIED FUNCTIONS, PART II</h1>
+			        <p>A common idiom in Quirrel is to save the parameters of a function into an object that contains both the parameters, and the desired calculation.</p>
+				<div class="body-code">
+				    <p>clicks := load(//clicks)
+views  := load(//views)
+clickthroughRate('page) := 
+  {page: 'page, ctr: count(clicks where clicks.pageId = 'page) / 
+                     count(views where views.pageId = 'page)}
+clickthroughRate
+
+[{"page":"page-4","ctr":0.5555555555555555555555555555555556}, 
+ {"page":"page-1","ctr":2.076923076923076923076923076923077}, ...]
+                                    
+				    </p>
+				</div>
+				<p>The final set contains objects that have a <em>page</em> field and a <em>ctr</em> field (the clickthrough rate for the specified page).</p>
+				<h1>AUGMENTATION</h1>
+			        <p>You can easily add more fields to objects, or more elements to arrays, with the <em>with</em> operator.</p>
+				<div class="body-code">
+				    <p>clicks := load(//clicks)
+clicksWithDays := clicks with {day: (std::time::dayOfYear(clicks.timeString)) }
+clicksWithDays
+
+[{"timeString": "2012-02-16T09:16:56.645+14:00", "pageId": "page-0", "time": 1329333416645,
+  "userId": "user-1010", "day": 47,"timeZone": "+14:00"}, ...]
+				    </p>
+				</div>
+				<p>In this query, a "day" field is added to the click objects.</p>
+				<h1>JOINS</h1>
+			        <p>The most complicated operator in Quirrel is the relate operator 'relate', which joins together sets that don't share identities, and allows you to perform operations on the joined sets.</p>
+				<div class="body-code">
+				    <p>customers := load(//customers)
+orders := load(//orders)
+fractionForUser('userId) :=
+  customers' = customers where customers.userId = 'userId 
+  orders' = orders where orders.userId = 'userId
+  customers' ~ orders'
+  orders.total / customers.income
+fractionForUser
+
+[0.0001458322727272727272727272727272727, ...]
+				    </p>
+				</div>
+				<p>The above query relates the customers and orders sets by their userId field, then computes the total order cost over income. The relate operator is similar to SQL's JOIN operator, but more powerful.</p>
+				<h1>SELF-JOINS</h1>
+			        <p>Quirrel makes it easy to do self-joins by providing the 'new' operator, which conceptually creates a copy of a set, but with new identities. The new set is not related to the original set (but you can relate it with the relate operator).</p>
+				<div class="body-code">
+				    <p>users  := load(//users)
+users' := new users
+users ~ users'
+{ location: users.location.state,  income: users.income }
+
+[{"location": "ID", "income": 150000}, {"location": "TX", "income": 109000}, ...]
+				    </p>
+				</div>
+				<p>The above query produces a cross-product of all states and income levels.</p>
+				<h1>THAT'S IT!</h1>
+			        <p>Quirrel has many built-in functions that help you do analytics. However, you now know all there is to know about Quirrel syntax and semantics.</p>
+			    </div>
+			    <div class="atrib-clear-left">
+			    </div>
+			</div>
+		    </div>
+		</div>
+	    </div>
+        </div>
+	<div id="page-footer">
+	    <div id="footer-content">
+		<p>Sponsored by <a href="http://www.precog.io">Precog</a></p>
+	    </div>
+	</div>
+    </body>
+</html>

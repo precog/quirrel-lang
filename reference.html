@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Reference</title>
+        <link rel="shortcut icon" href="http://www.whatisquirrel.com/images/favorite-icon.ico" mce_href="http://www.whatisquirrel.com/images/favorite-icon.ico"/>
+        <link rel="stylesheet" type="text/css" href="css/innerpage.css">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+        <script type="text/javascript" src="js/default.js"></script>
+        <style type="text/css">
+          .funcsig { font-weight: bold };
+        </style>
+    </head>
+    <body>
+        <div id="page-header">
+	    <div id="header-content">
+		<div id="header-logo">
+		</div>
+		<div id="header-nav-menu">
+		    <ul>
+			<li><a href="index.html">overview</a></li>
+			<li><a href="tutorial.html">tutorial</a></li>
+			<li><a href="specification.html">specification</a></li>
+			<li><a class="header-nav-menu-active" href="reference.html">reference</a></li>
+			<li><a href="license.html">license</a></li>
+			<li><a href="about.html">about</a></li>
+		    </ul>
+		</div>
+	    </div>
+	    <div class="atrib-clear-left">
+	    </div>
+	</div>
+	<div id="page-holder">
+	    <div id="page-body">
+		<div id="page-side-bar">
+		    <div id="side-bar-logo">
+		    </div>
+		    <!--
+		    <div id="side-bar-navigation">
+			<h1>overview</h1>
+			<ul>
+			    <li><a href="#gettingstarted-link">getting started</a></li>
+			    <li><a href="#examples-link">examples</a></li>
+			    <li><a href="#download-link">download</a></li>
+			</ul>
+		    </div>
+		    -->
+		</div>
+		<div id="page-body-content">
+		    <div id="page-body-text">
+			<div id="page-body-header">
+			    <h1>Reference</h1>
+			    <h2>Syntax, operators and functions of the Quirrel language</h2>
+			    <h3>Highlights</h3>
+			    <ul>
+			    	<li>Set-oriented data manipulation</li>
+    				<li>Powerful built-in operations and functions</li>
+    				<li>User-definable functions to abstract out common functionality</li>
+			    </ul>
+			</div>
+			<div id="page-body-section">
+			        <div class="page-body-column-wide">
+			          <h1 id="gettingstarted-link">Getting Started</h1>
+                                  <p>The <a href="tutorial.html">tutorial</a> is the best way to learn more about Quirrel. It walks you through all the concepts in Quirrel. This page provides a concise reference of language features, operators and functions. For more detail, you may want to check out the <a href="specification.html">language specification</a>.</p>
+			          <h1>Data In Quirrel</h1>
+                                  <p>Quirrel has native support for JSON. You can create strings, numbers, booleans, arrays, and objects just like you do in JavaScript.
+                              Additionally, Quirrel is set-oriented, which means all data are represented as sets of JSON values (surrounded by "[]"). For example:</p>
+			    <div class="body-code">
+			      <p>{name: "John", age: 29, gender: "male"}
+[{name: "John", age: 29, gender: "male"}]
+
+true
+[true]
+
+"hello world"
+["hello world"]</p>
+			    </div>
+                            <p>Note that single values are represented as single-element sets.</p>
+
+                            <h1>Operator Reference</h1>
+                            <ul>
+                              <li><p class="funcsig">new arg</p><p>Produces a copy of the given set with a fresh set of identities (for use in self-joins)</p></li>
+                              <li><p class="funcsig">arg1 + arg2</p><p>Numeric addition</p></li>
+                              <li><p class="funcsig">arg1 - arg2</p><p>Numeric subtraction</p></li>
+                              <li><p class="funcsig">arg1 * arg2</p><p>Numeric multiplication</p></li>
+                              <li><p class="funcsig">arg1 / arg2</p><p>Numeric subtraction</p></li>
+                              <li><p class="funcsig">arg1 &lt; arg2</p><p>Numeric less-than comparison</p></li>
+                              <li><p class="funcsig">arg1 &lt;= arg2</p><p>Numeric less-than-equal comparison</p></li>
+                              <li><p class="funcsig">arg1 &gt; arg2</p><p>Numeric greater-than comparison</p></li>
+                              <li><p class="funcsig">arg1 &gt;= arg2</p><p>Numeric greater-than-equal comparison</p></li>
+                              <li><p class="funcsig">arg1 = arg2</p><p>Equality comparison</p></li>
+                              <li><p class="funcsig">arg1 != arg2</p><p>Negated equality comparison</p></li>
+                              <li><p class="funcsig">arg1 &amp; arg2</p><p>Boolean conjunction</p></li>
+                              <li><p class="funcsig">arg1 | arg2</p><p>Boolean disjunction</p></li>
+                              <li><p class="funcsig">! arg</p><p>Boolean complementation</p></li>
+                              <li><p class="funcsig">neg arg</p><p>Numeric negation</p></li>
+                              <li><p class="funcsig">arg1 ~ arg2 arg3</p><p>Set relation (for use in cross-set joins)</p></li>
+                            </ul>
+
+                            <h1>Standard Function Reference</h1>
+                            <ul>
+                              <li><p class="funcsig">count (s : Any): Int</p>
+                                <p>Takes  a single set and returns its size.</p></li>
+                              
+                              <li><p class="funcsig">load (s : String): Any</p>
+                                <p>Takes  a single string path and returns the set of events in the data store which correspond to the path in question.</p></li>
+                              
+                              <li><p class="funcsig">max (s : Numeric): Int</p>
+                                <p>Takes  a single set of numeric events and returns the maximum value among all the events.</p></li>
+                              
+                              <li><p class="funcsig">mean (s : Numeric): Int</p>
+                                <p>Takes  a single set of numeric events and returns the arithmetic mean of all the values.</p></li>
+                              
+                              <li><p class="funcsig">min (s : Numeric): Int</p>
+                                <p>Takes  a single set of numeric events and returns the minimum of all the values.</p></li>
+                              
+                              <li><p class="funcsig">stdDev (s : Numeric): Int</p>
+                                <p>Takes  a single set of numeric events and returns the standard deviation from the arithmetic mean of all the values.</p></li>
+                              
+                              <li><p class="funcsig">sum (s : Numeric): Int</p>
+                                <p>Takes  a single set of numeric events and returns the sum of all the values.</p></li>
+                            </ul>
+
+                            <h1>DateTime Function Reference</h1>
+                            <ul>
+                              <li><p class="funcsig">std::time::changeTimeZone (time : ISO8601, tz: String): ISO8601</p>
+                                <p>Takes  a set of ISO8601 strings and a set of time zone strings (of the form "+04:00") and returns a set of ISO8601 strings.</p></li>
+                              
+                              <li><p class="funcsig">std::time::daysBetween (time1 : ISO8601, time2 : ISO8601): Int</p>
+                                <p>Takes  two sets of ISO8601 strings and returns a set of the days between two times.</p></li>
+                              
+                              <li><p class="funcsig">std::time::dayOfMonth (time : ISO8601): Int</p>
+                                <p>Takes  a single set of ISO8601 strings and returns a set of the day of the month.</p></li>
+                              
+                              <li><p class="funcsig">std::time::dayOfWeek (time : ISO8601): Int</p>
+                                <p>Takes  a single set of ISO8601 strings and returns a set of the day of the week as an integer. Monday is day 1.</p></li>
+                              
+                              <li><p class="funcsig">std::time::dayOfYear (time : ISO8601): Int</p>
+                                <p>Takes  a single set of ISO8601 strings and returns a set of the day of the year.</p></li>
+                              
+                              <li><p class="funcsig">std::time::getMillis (time : ISO8601): Long</p>
+                                <p>Takes  a set of ISO8601 strings and returns a set of millisecond longs</p></li>
+                              
+                              <li><p class="funcsig">std::time::hourOfDay (time : ISO8601): Int</p>
+                                <p>Takes  a single set of ISO8601 strings and returns a set of the hour of the day.</p></li>
+                              
+                              <li><p class="funcsig">std::time::hoursBetween (time1 : ISO8601, time2 : ISO8601): Long</p>
+                                <p>Takes  two sets of ISO8601 strings and returns a set of the hours between two times.</p></li>
+                              
+                              <li><p class="funcsig">std::time::millisOfSecond (time : ISO8601): Int</p>
+                                <p>Takes  a single set of ISO8601 strings and returns a set of the mills of the second.</p></li>
+                              
+                              <li><p class="funcsig">std::time::millisToISO (time : Long, tz : String): ISO8601</p>
+                                <p>Takes  a set of long millis-since-epoch and a set of time zone strings (of the form "+04:00") and returns a set of ISO8601 strings. </p></li>
+                              
+                              <li><p class="funcsig">std::time::minuteOfHour (time : ISO860]): Int</p>
+                                <p>Takes  a single set of ISO8601 strings and returns a set of the minute of the hour.</p></li>
+                              
+                              <li><p class="funcsig">std::time::minutesBetween (time1 : ISO8601, time2 : ISO8601): Long</p>
+                                <p>Takes  two sets of ISO8601 strings and returns a set of the minutes between two times.</p></li>
+                              
+                              <li><p class="funcsig">std::time::monthOfYear (time : ISO8601): Int</p>
+                                <p>Takes  a single set of ISO8601 strings and returns a set of the month of the year as an integer. January is month 1.</p></li>
+                              
+                              <li><p class="funcsig">std::time::monthsBetween (time1 : ISO8601, time2 : ISO8601): Int</p>
+                                <p>Takes  two sets of ISO8601 strings and returns a set of the months between two times.</p></li>
+                              
+                              <li><p class="funcsig">std::time::quarter (time : ISO8601): Int</p>
+                                <p>Takes  a single set of ISO8601 strings and returns a set of the quarter of year as an integer. January/February/March is quarter 1.</p></li>
+                              
+                              <li><p class="funcsig">std::time::season (time : ISO8601): String</p>
+                                <p>Takes  a set of ISO8601 strings and returns a set of strings. According to the solstices and equinoxes, the seasons are "fall", "winter", "spring", "summer".</p></li>
+                              
+                              <li><p class="funcsig">std::time::secondOfMinute (time : ISO8601): Int</p>
+                                <p>Takes  a single set of ISO8601 strings and returns a set of the second of the minute.</p></li>
+                              
+                              <li><p class="funcsig">std::time::seconds (time1 : ISO8601, time2 : ISO8601): Long</p>
+                                <p>Takes  two sets of ISO8601 strings and returns a set of the seconds between two times.</p></li>
+                              
+                              <li><p class="funcsig">std::time::timeZone (time : ISO8601): String</p>
+                                <p>Takes  a single set of ISO8601 strings and returns a set of the time zone as a string of the form "+04:00".</p></li>
+                              
+                              <li><p class="funcsig">std::time::weeksBetween (time1 : ISO8601, time2 : ISO8601): Int</p>
+                                <p>Takes  two sets of ISO8601 strings and returns a set of the weeks between two times.</p></li>
+                              
+                              <li><p class="funcsig">std::time::weekOfYear (time : ISO8601): Int</p>
+                                <p>Takes  a single set of ISO8601 strings and returns a set of the week of the year.</p></li>
+                              
+                              <li><p class="funcsig">std::time::year (time : ISO8601): Int</p>
+                                <p>Takes  a single set of ISO8601 strings and returns a set of the year.</p></li>
+                              
+                              <li><p class="funcsig">std::time::yearsBetween (time1 : ISO8601, time2 : ISO8601): Int</p>
+                                <p>Takes  two sets of ISO8601 strings and returns a set of the years between two times.</p></li>
+
+                            </ul>
+                          </div>
+                        </div>
+		    </div>
+		</div>
+	    </div>
+        </div>
+	<div class="atrib-clear-left">
+	</div>
+	<div id="page-footer">
+	    <div id="footer-content">
+		<p>Sponsored by <a href="http://www.precog.io">Precog</a></p>
+	    </div>
+	</div>
+    </body>
+</html>
