@@ -99,97 +99,133 @@ true
                             <h1>Standard Function Reference</h1>
                             <ul>
                               <li><p class="funcsig">count (s : Any): Int</p>
-                                <p>Takes  a single set and returns its size.</p></li>
+                                <p>Takes a single set and returns its size.</p></li>
                               
                               <li><p class="funcsig">load (s : String): Any</p>
-                                <p>Takes  a single string path and returns the set of events in the data store which correspond to the path in question.</p></li>
+                                <p>Takes a single string path and returns the set of events in the data store which correspond to the path in question.</p></li>
                               
                               <li><p class="funcsig">max (s : Numeric): Int</p>
-                                <p>Takes  a single set of numeric events and returns the maximum value among all the events.</p></li>
+                                <p>Takes a single set of numeric events and returns the maximum value among all the events.</p></li>
                               
                               <li><p class="funcsig">mean (s : Numeric): Int</p>
-                                <p>Takes  a single set of numeric events and returns the arithmetic mean of all the values.</p></li>
+                                <p>Takes a single set of numeric events and returns the arithmetic mean of all the values.</p></li>
                               
                               <li><p class="funcsig">min (s : Numeric): Int</p>
-                                <p>Takes  a single set of numeric events and returns the minimum of all the values.</p></li>
+                                <p>Takes a single set of numeric events and returns the minimum of all the values.</p></li>
                               
                               <li><p class="funcsig">stdDev (s : Numeric): Int</p>
-                                <p>Takes  a single set of numeric events and returns the standard deviation from the arithmetic mean of all the values.</p></li>
+                                <p>Takes a single set of numeric events and returns the standard deviation from the arithmetic mean of all the values.</p></li>
                               
                               <li><p class="funcsig">sum (s : Numeric): Int</p>
-                                <p>Takes  a single set of numeric events and returns the sum of all the values.</p></li>
+                                <p>Takes a single set of numeric events and returns the sum of all the values.</p></li>
                             </ul>
 
                             <h1>DateTime Function Reference</h1>
                             <ul>
                               <li><p class="funcsig">std::time::changeTimeZone (time : ISO8601, tz: String): ISO8601</p>
-                                <p>Takes  a set of ISO8601 strings and a set of time zone strings (of the form "+04:00") and returns a set of ISO8601 strings.</p></li>
+                                <p>Takes a set of ISO8601 strings and a set of time zone strings (of the form "+04:00") and returns a set of ISO8601 strings.</p></li>
+                              
+                              <li><p class="funcsig">std::time::date (time : ISO8601): Int</p>
+                                <p>Takes a single set of ISO8601 strings and returns the date in format "yyyy-MM-dd".</p></li>
+                                 
+                              <li><p class="funcsig">std::time::dateHour(time : ISO8601): Int</p>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the date and hour in format "yyyy-MM-dd'T'HH".</p></li>
+                                 
+                              <li><p class="funcsig">std::time::dateHourMinute(time : ISO8601): Int</p>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the date, hour, and minute in format "yyyy-MM-dd'T'HH:mm".</p></li>
+                                 
+                              <li><p class="funcsig">std::time::dateHourMinuteSecond(time : ISO8601): Int</p>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the date, hour, minute, and second in format "yyyy-MM-dd'T'HH:mm:ss".</p></li>
+                                 
+                              <li><p class="funcsig">std::time::dateHourMinuteSecondMillis(time : ISO8601): Int</p>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the date, hour, minute, second, and millisecond in format "yyyy-MM-dd'T'HH:mm:ss.SSS".</p></li>
                               
                               <li><p class="funcsig">std::time::daysBetween (time1 : ISO8601, time2 : ISO8601): Int</p>
-                                <p>Takes  two sets of ISO8601 strings and returns a set of the days between two times.</p></li>
+                                <p>Takes two sets of ISO8601 strings and returns a set of the days between two times.</p></li>
                               
                               <li><p class="funcsig">std::time::dayOfMonth (time : ISO8601): Int</p>
-                                <p>Takes  a single set of ISO8601 strings and returns a set of the day of the month.</p></li>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the day of the month.</p></li>
                               
                               <li><p class="funcsig">std::time::dayOfWeek (time : ISO8601): Int</p>
-                                <p>Takes  a single set of ISO8601 strings and returns a set of the day of the week as an integer. Monday is day 1.</p></li>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the day of the week as an integer. Monday is day 1.</p></li>
                               
                               <li><p class="funcsig">std::time::dayOfYear (time : ISO8601): Int</p>
-                                <p>Takes  a single set of ISO8601 strings and returns a set of the day of the year.</p></li>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the day of the year.</p></li>
                               
                               <li><p class="funcsig">std::time::getMillis (time : ISO8601): Long</p>
-                                <p>Takes  a set of ISO8601 strings and returns a set of millisecond longs</p></li>
+                                <p>Takes a set of ISO8601 strings and returns a set of millisecond longs</p></li>
+                                 
+                              <li><p class="funcsig">std::time::hourMinute(time : ISO8601): Int</p>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the hour and minute in format "HH:mm".</p></li>
+                                 
+                              <li><p class="funcsig">std::time::hourMinuteSecond(time : ISO8601): Int</p>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the hour, minute, and second in format "HH:mm:ss".</p></li>
                               
                               <li><p class="funcsig">std::time::hourOfDay (time : ISO8601): Int</p>
-                                <p>Takes  a single set of ISO8601 strings and returns a set of the hour of the day.</p></li>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the hour of the day.</p></li>
                               
                               <li><p class="funcsig">std::time::hoursBetween (time1 : ISO8601, time2 : ISO8601): Long</p>
-                                <p>Takes  two sets of ISO8601 strings and returns a set of the hours between two times.</p></li>
+                                <p>Takes two sets of ISO8601 strings and returns a set of the hours between two times.</p></li>
                               
                               <li><p class="funcsig">std::time::millisOfSecond (time : ISO8601): Int</p>
-                                <p>Takes  a single set of ISO8601 strings and returns a set of the mills of the second.</p></li>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the mills of the second.</p></li>
                               
                               <li><p class="funcsig">std::time::millisToISO (time : Long, tz : String): ISO8601</p>
-                                <p>Takes  a set of long millis-since-epoch and a set of time zone strings (of the form "+04:00") and returns a set of ISO8601 strings. </p></li>
+                                <p>Takes a set of long millis-since-epoch and a set of time zone strings (of the form "+04:00") and returns a set of ISO8601 strings. </p></li>
                               
                               <li><p class="funcsig">std::time::minuteOfHour (time : ISO860]): Int</p>
-                                <p>Takes  a single set of ISO8601 strings and returns a set of the minute of the hour.</p></li>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the minute of the hour.</p></li>
                               
                               <li><p class="funcsig">std::time::minutesBetween (time1 : ISO8601, time2 : ISO8601): Long</p>
-                                <p>Takes  two sets of ISO8601 strings and returns a set of the minutes between two times.</p></li>
+                                <p>Takes two sets of ISO8601 strings and returns a set of the minutes between two times.</p></li>
+                                 
+                              <li><p class="funcsig">std::time::monthDay(time : ISO8601): Int</p>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the month and day in format "MM-dd".</p></li>
                               
                               <li><p class="funcsig">std::time::monthOfYear (time : ISO8601): Int</p>
-                                <p>Takes  a single set of ISO8601 strings and returns a set of the month of the year as an integer. January is month 1.</p></li>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the month of the year as an integer. January is month 1.</p></li>
                               
                               <li><p class="funcsig">std::time::monthsBetween (time1 : ISO8601, time2 : ISO8601): Int</p>
-                                <p>Takes  two sets of ISO8601 strings and returns a set of the months between two times.</p></li>
+                                <p>Takes two sets of ISO8601 strings and returns a set of the months between two times.</p></li>
                               
                               <li><p class="funcsig">std::time::quarter (time : ISO8601): Int</p>
-                                <p>Takes  a single set of ISO8601 strings and returns a set of the quarter of year as an integer. January/February/March is quarter 1.</p></li>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the quarter of year as an integer. January/February/March is quarter 1.</p></li>
                               
                               <li><p class="funcsig">std::time::season (time : ISO8601): String</p>
-                                <p>Takes  a set of ISO8601 strings and returns a set of strings. According to the solstices and equinoxes, the seasons are "fall", "winter", "spring", "summer".</p></li>
+                                <p>Takes a set of ISO8601 strings and returns a set of strings. According to the solstices and equinoxes, the seasons are "fall", "winter", "spring", "summer".</p></li>
                               
                               <li><p class="funcsig">std::time::secondOfMinute (time : ISO8601): Int</p>
-                                <p>Takes  a single set of ISO8601 strings and returns a set of the second of the minute.</p></li>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the second of the minute.</p></li>
                               
                               <li><p class="funcsig">std::time::seconds (time1 : ISO8601, time2 : ISO8601): Long</p>
-                                <p>Takes  two sets of ISO8601 strings and returns a set of the seconds between two times.</p></li>
+                                <p>Takes two sets of ISO8601 strings and returns a set of the seconds between two times.</p></li>
+                                 
+                              <li><p class="funcsig">std::time::timeWithZone(time : ISO8601): Int</p>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the time and time zone in format "HH:mm:ss.SSSZZ".</p></li>
+                                 
+                              <li><p class="funcsig">std::time::timeWithoutZone(time : ISO8601): Int</p>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the time in format "HH:mm:ss.SSS".</p></li>
                               
                               <li><p class="funcsig">std::time::timeZone (time : ISO8601): String</p>
-                                <p>Takes  a single set of ISO8601 strings and returns a set of the time zone as a string of the form "+04:00".</p></li>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the time zone as a string of the form "+04:00".</p></li>
                               
                               <li><p class="funcsig">std::time::weeksBetween (time1 : ISO8601, time2 : ISO8601): Int</p>
-                                <p>Takes  two sets of ISO8601 strings and returns a set of the weeks between two times.</p></li>
+                                <p>Takes two sets of ISO8601 strings and returns a set of the weeks between two times.</p></li>
                               
                               <li><p class="funcsig">std::time::weekOfYear (time : ISO8601): Int</p>
-                                <p>Takes  a single set of ISO8601 strings and returns a set of the week of the year.</p></li>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the week of the year.</p></li>
                               
                               <li><p class="funcsig">std::time::year (time : ISO8601): Int</p>
-                                <p>Takes  a single set of ISO8601 strings and returns a set of the year.</p></li>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the year.</p></li>
                               
                               <li><p class="funcsig">std::time::yearsBetween (time1 : ISO8601, time2 : ISO8601): Int</p>
-                                <p>Takes  two sets of ISO8601 strings and returns a set of the years between two times.</p></li>
+                                <p>Takes two sets of ISO8601 strings and returns a set of the years between two times.</p></li>
+                                 
+                              <li><p class="funcsig">std::time::yearDayOfYear(time : ISO8601): Int</p>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the year and day of year in format "yyyy-DDD".</p></li>
+                                 
+                              <li><p class="funcsig">std::time::yearMonth(time : ISO8601): Int</p>
+                                <p>Takes a single set of ISO8601 strings and returns a set of the year and month in format "yyyy-MM".</p></li>
 
                             </ul>
                           </div>
