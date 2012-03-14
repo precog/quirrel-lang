@@ -284,7 +284,7 @@ h1 {
     width: 96%;
     margin-right: 4%;
     float: left;
-    padding-bottom: 20px;
+    padding-bottom: 60px;
 }
 
 #page-body-section {
@@ -354,7 +354,6 @@ h1 {
 
 #page-body-section .page-body-column-wide .body-code {
     padding-top: 4px;
-    padding-bottom: 80px;
 }
 
 #page-body-section .body-code p {
