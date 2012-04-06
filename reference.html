@@ -89,6 +89,15 @@ true
 				    </div>
                             <p>Note that single values are represented as single-element sets.</p>
 
+                            <h1>Function Reference Table Of Contents</h1>
+
+                            <p><a href = "#operator">Operator Reference</a></p>
+                            <p><a href = "#standard">Standard Function Reference</a></p>
+                            <p><a href = "#math">Math Function Reference</a></p>
+                            <p><a href = "#string">String Function Reference</a></p>
+                            <p><a href = "#datetime">DateTime Function Reference</a></p>
+
+                            <a name = "operator"></a>
                             <h1>Operator Reference</h1>
                             <ul>
                               <li><p class="funcsig">new arg</p><p>Produces a copy of the given set with a fresh set of identities (for use in self-joins)</p></li>
@@ -107,12 +116,21 @@ true
                               <li><p class="funcsig">! arg</p><p>Boolean complementation</p></li>
                               <li><p class="funcsig">neg arg</p><p>Numeric negation</p></li>
                               <li><p class="funcsig">arg1 ~ arg2 arg3</p><p>Set relation (for use in cross-set joins)</p></li>
+                              <li><p class="funcsig">arg1 union arg2</p><p>Set union</p></li>
+                              <li><p class="funcsig">arg1 intersect arg2</p><p>Set intersection</p></li>
                             </ul>
 
+                            <a name = "standard"></a>
                             <h1>Standard Function Reference</h1>
                             <ul>
                               <li><p class="funcsig">count (s : Any): Int</p>
-                                <p>Takes a single set and returns its size.</p></li>
+                              <p>Takes a single set and returns its size.</p></li>                              
+                              
+                              <li><p class="funcsig">distinct (s : Any): Any</p>
+                               <p>Takes a single set and returns a set of the distinct (unique) values.</p></li>                             
+                              
+                              <li><p class="funcsig">geometricMean (s : Numeric): Int</p>
+                                <p>Takes a single set and returns its geometric mean.</p></li>
                               
                               <li><p class="funcsig">load (s : String): Any</p>
                                 <p>Takes a single string path and returns the set of events in the data store which correspond to the path in question.</p></li>
@@ -131,8 +149,159 @@ true
                               
                               <li><p class="funcsig">sum (s : Numeric): Int</p>
                                 <p>Takes a single set of numeric events and returns the sum of all the values.</p></li>
+                                
+                              <li><p class="funcsig">sumSq (s : Numeric): Int</p>
+                               <p>Takes a single set and returns the sum of the square of each value.</p></li>                             
+                               
+                              <li><p class="funcsig">variance (s : Numeric): Int</p>
+                                <p>Takes a single set and returns its variance.</p></li>
                             </ul>
 
+                            <a name = "math"></a>
+                            <h1> Math Function Reference</h1>
+                            <ul>
+                              <li><p class="funcsig">std::math::abs (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events and returns a set of each absolute value.</p></li>
+
+                              <li><p class="funcsig">std::math::acos (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events and returns a set of each arccosine.</p></li>
+
+                              <li><p class="funcsig">std::math::asin (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events and returns a set of each arcsine.</p></li>
+                                
+                              <li><p class="funcsig">std::math::atan (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events and returns a set of each arctangent.</p></li>
+
+                              <li><p class="funcsig">std::math::atan2 (n1: Numeric, n2: Numeric): Double</p>
+                                <p>Takes two sets of numeric events and returns a set of the angle theta from the conversion of each pair of rectangular coordinates to polar coordinates.</p></li>
+
+                              <li><p class="funcsig">std::math::cbrt (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events and returns a set of each cube root.</p></li>
+
+                              <li><p class="funcsig">std::math::ceil (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events and returns a set of each ceiling.</p></li>
+
+                              <li><p class="funcsig">std::math::copySign (n: Numeric): Double</p>
+                                <p>Takes two sets of numeric events and returns the first value with the sign of the second value.</p></li>
+
+                              <li><p class="funcsig">std::math::cos (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events and returns a set of each cosine.</p></li>
+
+                              <li><p class="funcsig">std::math::cosh (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events and returns a set of each hyperbolic cosine.</p></li>
+
+                              <li><p class="funcsig">std::math::exp (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events and returns a set of Euler's number (e) raised to each value.</p></li>
+
+                              <li><p class="funcsig">std::math::floor (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events and returns a set of each floor.</p></li>
+
+                              <li><p class="funcsig">std::math::hypot (n1: Numeric, n2: Numeric): Double</p>
+                                <p>Takes two sets of numeric events and returns a set of the square root of the sum of the square of each pair.</p></li>
+
+                              <li><p class="funcsig">std::math::IEEEremainder (n1: Numeric, n2: Numeric): Double</p>
+                                <p>Takes two sets of numeric events and returns a set of the remainder operation computed on the two values, as prescribed by the IEEE 754 standard.</p></li>
+
+                              <li><p class="funcsig">std::math::log (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events and returns a set of each natural log.</p></li>
+
+                              <li><p class="funcsig">std::math::log10 (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events and returns a set of each log in base 10.</p></li>
+
+                              <li><p class="funcsig">std::math::min (n1: Numeric, n2: Numeric): Double</p>
+                                <p>Takes two sets of numeric events and returns a set of the minimum of each pair.</p></li>
+
+                              <li><p class="funcsig">std::math::max (n1: Numeric, n2: Numeric): Double</p>
+                                <p>Takes two sets of numeric events and returns a set of the maximum of each pair.</p></li>
+
+                              <li><p class="funcsig">std::math::pow (n1: Numeric, n2: Numeric): Double</p>
+                                <p>Takes two sets of numeric events and returns a set of the first value raised to the power of the second value.</p></li>
+
+                              <li><p class="funcsig">std::math::round (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events and returns a set of each value rounded.</p></li>
+
+                              <li><p class="funcsig">std::math::sin (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events and returns a set of each sine.</p></li>
+
+                              <li><p class="funcsig">std::math::signum (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events and returns a set of each signum. 1.0 if the argument is greater than zero. -1.0 if the argument is less than zero.</p></li>
+
+                              <li><p class="funcsig">std::math::sinh (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events and returns a set of each hyperbolic sine.</p></li>
+
+                              <li><p class="funcsig">std::math::sqrt (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events and returns a set of each square root.</p></li>
+
+                              <li><p class="funcsig">std::math::tan (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events and returns a set of each tangent.</p></li>
+
+                              <li><p class="funcsig">std::math::tanh (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events and returns a set of each hyperbolic tangent.</p></li>
+
+                              <li><p class="funcsig">std::math::toDegrees (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events (in Radians) and returns a set of each value in degrees.</p></li>
+
+                              <li><p class="funcsig">std::math::toRadians (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events (in degrees) and returns a set of each value in Radians.</p></li>
+
+                              <li><p class="funcsig">std::math::ulp (n: Numeric): Double</p>
+                                <p>Takes a single set of numeric events and returns a set of the size of each unit in the last place.</p></li>
+                            </ul>
+
+                            <a name = "string"></a>
+                            <h1>String Function Reference</h1>
+                            <ul>
+
+                              <li><p class="funcsig">std::string::codePointAt (s: String, n: Numeric): Int</p>
+                                <p>Takes a single set of string events and a set of numeric events. Returns the character (Unicode code point) at the specified index.</p></li>
+
+                              <li><p class="funcsig">std::string::codePointBefore (s: String, n: Numeric): Int</p>
+                                <p>Takes a single set of string events and a set of numeric events. Returns the character (Unicode code point) before the specified index.</p></li>
+
+                              <li><p class="funcsig">std::string::concat (s1: String, s2: String): String</p>
+                                <p>Takes two sets of string events and returns the concatenation of the two strings.</p></li>
+
+                              <li><p class="funcsig">std::string::endsWith (s1: String, s2: String): Boolean</p>
+                                <p>Takes two sets of string events and returns a set of true or false. True if and only if the first string ends with the suffix specified by the second string.</p></li>
+
+                              <li><p class="funcsig">std::string::equals (s1: String, s2: String): Boolean</p>
+                                <p>Takes two sets of string events and returns a set of true or false. True if and only if the two strings are equivalent.</p></li>
+
+                              <li><p class="funcsig">std::string::equalsIgnoreCase (s1: String, s2: String): Boolean</p>
+                                <p>Takes two sets of string events and returns a set of true or false. True if and only if the two strings are equivalent, ignoring case considerations.</p></li>
+
+                              <li><p class="funcsig">std::string::indexOf (s1: String, s2: String): Int</p>
+                                <p>Takes two sets of string events and returns the index in the first string of the first occurrence of the substring specified by the second string.</p></li>
+
+                              <li><p class="funcsig">std::string::isEmpty (s: String): Boolean</p>
+                                <p>Takes a single set of string events and returns a set of true or false. True if and only if the length of the string is zero.</p></li>
+                                
+                              <li><p class="funcsig">std::string::lastIndexOf (s1: String, s2: String): Int</p>
+                                <p>Takes two sets of string events and returns the index in the first string of the last occurrence of the substring specified by the second string.</p></li>
+
+                              <li><p class="funcsig">std::string::length (s: String): Int</p>
+                                <p>Takes a single set of string events and returns a set of each string length.</p></li>
+
+                              <li><p class="funcsig">std::string::matches (s1: String, s2: String): Boolean</p>
+                                <p>Takes two sets of string events and returns true or false. True if and only if the first string matches the regular expression specified by the second string.</p></li>
+
+                              <li><p class="funcsig">std::string::startsWith (s1: String, s2: String): Boolean</p>
+                                <p>Takes two sets of string events and returns true or false. True if and only if the first string starts with the prefix specified by the second string.</p></li>
+
+                              <li><p class="funcsig">std::string::substring (s: String, n: Numeric): String</p>
+                                <p>Takes two sets of string events and returns a new substring of the first string, beginning at the specified index.</p></li>
+
+                              <li><p class="funcsig">std::string::toLowerCase (s: String): String</p>
+                                <p>Takes a single set of string events and returns a set of each string with each character in lower case.</p></li>
+
+                              <li><p class="funcsig">std::string::toUpperCase (s: String): String</p>
+                                <p>Takes a single set of string events and returns a set of each string with each character in upper case.</p></li>
+
+                              <li><p class="funcsig">std::string::trim (s: String): String</p>
+                                <p>Takes a single set of string events and returns a set of each string copied with leading and trailing whitespace omitted.</p></li>
+                            </ul>
+
+                            <a name = "datetime"></a>
                             <h1>DateTime Function Reference</h1>
                             <ul>
                               <li><p class="funcsig">std::time::changeTimeZone (time : ISO8601, tz: String): ISO8601</p>
