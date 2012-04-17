@@ -113,7 +113,7 @@ square - 1
 				<h1>LOADING DATA</h1>
 			        <p>The most basic query you can do is to retrieve raw data. To do this, use the <em>load</em> function, and specify the path to load data from.</p>
 				<div class="body-code">
-				    <p>load(//payments)
+				    <p>//payments
 payments
 [{"date":1330497295803, "amount": 500.0, "recipients": ["research", "marketting"]}, ...]
 </p>
@@ -122,7 +122,7 @@ payments
 				<h1>FILTERED DESCENT</h1>
 			        <p>Quirrel has direct support for JavaScript's <em>object dereference</em> and <em>array dereference</em> operators. These operations implicitly filter the dataset to those items that contain the specified field or array index.</p>
 				<div class="body-code">
-				    <p>payments := load(//payments)
+				    <p>payments := //payments
 payments.date
 [1330404486064, 1330445714479, 1330577286058, ...]
 
@@ -134,13 +134,13 @@ payments.recipients[0]
 				<h1>REDUCTIONS</h1>
 			        <p>Quirrel can reduce sets of data into a single value. There are many built-in reductions.</p>
 				<div class="body-code">
-				    <p>count(load(//payments))
+				    <p>count(//payments)
 [92323]
 
-mean(load(//payments).amount)
+mean(//payments.amount)
 [23.91]
 
-sum(load(//payments).amount)
+sum(//payments.amount)
 [2207442.93]
 				    </p>
 				</div>
@@ -150,7 +150,7 @@ sum(load(//payments).amount)
 				<h1>IDENTITY MATCHING</h1>
 			        <p>All functions and operators in Quirrel operate on sets of events, not values. When you add two sets (for example), Quirrel finds the events whose identities match, and adds their values, to produce a new set.</p>
 				<div class="body-code">
-				    <p>orders := load(//orders)
+				    <p>orders := //orders
 orders.subTotal + orders.subTotal * orders.taxRate + orders.shipping + orders.handling
 [134.31905, 156.09615, 31.30669, 94.3478, ...]
 				    </p>
@@ -159,7 +159,7 @@ orders.subTotal + orders.subTotal * orders.taxRate + orders.shipping + orders.ha
 				<h1>VALUES</h1>
 			        <p>Quirrel implicitly converts values like "0.10" or "male" into sets containing a single event. These events have so-called <em>bottom identity</em>, which matches against all identities.</p>
 				<div class="body-code">
-				    <p>payments := load(//payments)
+				    <p>payments := //payments
 payments.amount * 0.10
 [39.560, 47.780, 25.3480, ...]
 				    </p>
@@ -168,11 +168,11 @@ payments.amount * 0.10
 				<h1>FILTERING</h1>
 			        <p>Quirrel has a "where" operator which allows you to filter one set by another set of boolean values.</p>
 				<div class="body-code">
-				    <p>payments := load(//payments)
+				    <p>payments := //payments
 count(payments where payments.amount > 10.00)
 [2932]
 
-users := load(//users)
+users := //users
 segment := users.age > 19 & users.age < 53 & users.income > 60000
 count(users where segment)
 [74]
@@ -182,7 +182,7 @@ count(users where segment)
 				<h1>CHAINING</h1>
 			        <p>Quirrel lets you chain expressions together without any limitations. This lets you easily perform multi-step analytical queries.</p>
 				<div class="body-code">
-				    <p>pageViews := load(//pageViews)
+				    <p>pageViews := //pageViews
 bound := 1.5 * stdDev(pageViews.duration)
 avg := mean(pageViews.duration)
 longPageViews := pageViews where pageViews.duration > (avg + bound)
@@ -202,7 +202,7 @@ longPageViews.userId
 				<h1>FULLY-APPLIED FUNCTIONS</h1>
 			        <p>You can call functions with parameters. This has the same effect as substituting the parameters into the body of the function.</p>
 				<div class="body-code">
-				    <p>pageViews := load(//pageViews)
+				    <p>pageViews := //pageViews
 pageViewsForUser('userId) := pageViews where pageViews.userId = 'userId
 pageViewsForUser(12345)
 
@@ -212,7 +212,7 @@ pageViewsForUser(12345)
 				<h1>PARTIALLY-APPLIED FUNCTIONS, PART I</h1>
 			        <p>In many cases, Quirrel knows how to compute the range of values for a parameter. If you call the function without supplying a value, Quirrel will evaluate the function at all possible values and merge the results into a single set.</p>
 				<div class="body-code">
-				    <p>pageViews := load(//pageViews)
+				    <p>pageViews := //pageViews
 pageViewsForUser('userId) := 
   {userId: 'userId, meanPageView: mean(pageViews.duration where pageViews.userId = 'userId)}
 pageViewsForUser
@@ -224,8 +224,8 @@ pageViewsForUser
 				<h1>PARTIALLY-APPLIED FUNCTIONS, PART II</h1>
 			        <p>A common idiom in Quirrel is to save the parameters of a function into an object that contains both the parameters, and the desired calculation.</p>
 				<div class="body-code">
-				    <p>clicks := load(//clicks)
-views  := load(//views)
+				    <p>clicks := //clicks
+views  := //views
 clickthroughRate('page) := 
   {page: 'page, ctr: count(clicks where clicks.pageId = 'page) / 
                      count(views where views.pageId = 'page)}
@@ -240,7 +240,7 @@ clickthroughRate
 				<h1>AUGMENTATION</h1>
 			        <p>You can easily add more fields to objects, or more elements to arrays, with the <em>with</em> operator.</p>
 				<div class="body-code">
-				    <p>clicks := load(//clicks)
+				    <p>clicks := //clicks
 clicksWithDays := clicks with {day: (std::time::dayOfYear(clicks.timeString)) }
 clicksWithDays
 
@@ -252,8 +252,8 @@ clicksWithDays
 				<h1>JOINS</h1>
 			        <p>The most complicated operator in Quirrel is the relate operator 'relate', which joins together sets that don't share identities, and allows you to perform operations on the joined sets.</p>
 				<div class="body-code">
-				    <p>customers := load(//customers)
-orders := load(//orders)
+				    <p>customers := //customers
+orders := //orders
 fractionForUser('userId) :=
   customers' = customers where customers.userId = 'userId 
   orders' = orders where orders.userId = 'userId
@@ -268,7 +268,7 @@ fractionForUser
 				<h1>SELF-JOINS</h1>
 			        <p>Quirrel makes it easy to do self-joins by providing the 'new' operator, which conceptually creates a copy of a set, but with new identities. The new set is not related to the original set (but you can relate it with the relate operator).</p>
 				<div class="body-code">
-				    <p>users  := load(//users)
+				    <p>users  := //users
 users' := new users
 users ~ users'
 { location: users.location.state,  income: users.income }
