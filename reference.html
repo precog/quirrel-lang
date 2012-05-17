@@ -93,6 +93,7 @@ true
 
                             <p><a href = "#operator">Operator Reference</a></p>
                             <p><a href = "#standard">Standard Function Reference</a></p>
+                            <p><a href = "#statistics">Statistics Function Reference</a></p>
                             <p><a href = "#math">Math Function Reference</a></p>
                             <p><a href = "#string">String Function Reference</a></p>
                             <p><a href = "#datetime">DateTime Function Reference</a></p>
@@ -129,32 +130,54 @@ true
                               <li><p class="funcsig">distinct (s : Any): Any</p>
                                <p>Takes a single set and returns a set of the distinct (unique) values.</p></li>                             
                               
-                              <li><p class="funcsig">geometricMean (s : Numeric): Numeric</p>
+                              <li><p class="funcsig">geometricMean (n : Numeric): Numeric</p>
                                 <p>Takes a single set and returns its geometric mean.</p></li>
                               
                               <li><p class="funcsig">load (s : String): Any</p>
                                 <p>Takes a single string path and returns the set of events in the data store which correspond to the path in question.</p></li>
                               
-                              <li><p class="funcsig">max (s : Numeric): Numeric</p>
+                              <li><p class="funcsig">max (n : Numeric): Numeric</p>
                                 <p>Takes a single set of numeric events and returns the maximum value among all the events.</p></li>
                               
-                              <li><p class="funcsig">mean (s : Numeric): Numeric</p>
+                              <li><p class="funcsig">mean (n : Numeric): Numeric</p>
                                 <p>Takes a single set of numeric events and returns the arithmetic mean of all the values.</p></li>
                               
-                              <li><p class="funcsig">min (s : Numeric): Numeric</p>
+                              <li><p class="funcsig">min (n : Numeric): Numeric</p>
                                 <p>Takes a single set of numeric events and returns the minimum of all the values.</p></li>
                               
-                              <li><p class="funcsig">stdDev (s : Numeric): Numeric</p>
+                              <li><p class="funcsig">stdDev (n : Numeric): Numeric</p>
                                 <p>Takes a single set of numeric events and returns the standard deviation from the arithmetic mean of all the values.</p></li>
                               
-                              <li><p class="funcsig">sum (s : Numeric): Numeric</p>
+                              <li><p class="funcsig">sum (n : Numeric): Numeric</p>
                                 <p>Takes a single set of numeric events and returns the sum of all the values.</p></li>
                                 
-                              <li><p class="funcsig">sumSq (s : Numeric): Numeric</p>
+                              <li><p class="funcsig">sumSq (n : Numeric): Numeric</p>
                                <p>Takes a single set and returns the sum of the square of each value.</p></li>                             
                                
-                              <li><p class="funcsig">variance (s : Numeric): Numeric</p>
-                                <p>Takes a single set and returns its variance.</p></li>
+                              <li><p class="funcsig">variance (n : Numeric): Numeric</p>
+                                <p>Takes a single set and returns its population variance.</p></li>
+                            </ul>
+
+                            <a name = "statistics"></a>
+                            <h1>Statistics Function Reference</h1>
+                            <ul>
+                              <li><p class="funcsig">std::stats::corr (n1 : Numeric, n2 : Numeric): Numeric</p>
+                                <p>Takes two sets and returns the correlation coefficient of the matched pairs of numbers.</p></li>                              
+
+                              <li><p class="funcsig">std::stats::cov (n1 : Numeric, n2 : Numeric): Numeric</p>
+                                <p>Takes two sets and returns the population covariance of the matched pairs of numbers.</p></li>                              
+
+                              <li><p class="funcsig">std::stats::linReg (x : Numeric, y : Numeric): Array[Numeric]</p>
+                                <p>Takes two sets and returns an array of two numbers which determine a linear regression. The number at index 0 is the slope of the line, and the number at index 1 is the y-intercept of the line. 'x' is considered the independent variable, and 'y' is considered the dependent variable.</p></li>                              
+
+                              <li><p class="funcsig">std::stats::logReg (x : Numeric, y : Numeric): Array[Numeric]</p>
+                                <p>Takes two sets and returns an array of two numbers which determine a logarithmic regression of the form 'y = m*log(x) + b'. 'x' is considered the independent variable, and 'y' is considered the dependent variable. The number at index 0 is the value of 'm', and the number at index 1 is the value of the y-intercept, 'b'.</p></li>                              
+
+                              <li><p class="funcsig">std::stats::rank (n : Numeric): Numeric</p>
+                                <p>Takes a single set and returns a set of ranks. Numbers with the same value receive the same rank, and the ranks might not be consecutive. To calculate the next rank, the number of rows with the same value is added to the current rank.</p></li>                              
+
+                              <li><p class="funcsig">std::stats::denseRank (n : Numeric): Numeric</p>
+                                <p>Takes a single set and returns a set of ranks. Numbers with the same value receive the same rank, and the ranks are consecutive. To calculate the next rank, the next sequential integer is chosen.</p></li>                              
                             </ul>
 
                             <a name = "math"></a>
