@@ -119,6 +119,7 @@ true
                               <li><p class="funcsig">arg1 ~ arg2 arg3</p><p>Set relation (for use in cross-set joins)</p></li>
                               <li><p class="funcsig">arg1 union arg2</p><p>Set union</p></li>
                               <li><p class="funcsig">arg1 intersect arg2</p><p>Set intersection</p></li>
+                              <li><p class="funcsig">arg1 difference arg2</p><p>Set difference. Returns the events contained in arg1 which are not contained in arg2.</p></li>
                             </ul>
 
                             <a name = "standard"></a>
@@ -167,11 +168,11 @@ true
                               <li><p class="funcsig">std::stats::cov (n1 : Numeric, n2 : Numeric): Numeric</p>
                                 <p>Takes two sets and returns the population covariance of the matched pairs of numbers.</p></li>                              
 
-                              <li><p class="funcsig">std::stats::linReg (x : Numeric, y : Numeric): Array[Numeric]</p>
-                                <p>Takes two sets and returns an array of two numbers which determine a linear regression. The number at index 0 is the slope of the line, and the number at index 1 is the y-intercept of the line. 'x' is considered the independent variable, and 'y' is considered the dependent variable.</p></li>                              
+                              <li><p class="funcsig">std::stats::linReg (x : Numeric, y : Numeric): Object[Numeric]</p>
+                                <p>Takes two sets and returns an object containing two numeric fields which determine a linear regression. The number in the field 'slope' is the slope of the line, and the number in the field 'intercept' is the y-intercept of the line. 'x' is considered the independent variable, and 'y' is considered the dependent variable.</p></li>                              
 
-                              <li><p class="funcsig">std::stats::logReg (x : Numeric, y : Numeric): Array[Numeric]</p>
-                                <p>Takes two sets and returns an array of two numbers which determine a logarithmic regression of the form 'y = m*log(x) + b'. 'x' is considered the independent variable, and 'y' is considered the dependent variable. The number at index 0 is the value of 'm', and the number at index 1 is the value of the y-intercept, 'b'.</p></li>                              
+                              <li><p class="funcsig">std::stats::logReg (x : Numeric, y : Numeric): Object[Numeric]</p>
+                                <p>Takes two sets and returns an object containing two numeric fields which determine a logarithmic regression of the form 'y = m*log(x) + b'. 'x' is considered the independent variable, and 'y' is considered the dependent variable. The number in the field 'slope' is the value of 'm', and the number in the field 'intercept' is the value of the y-intercept, 'b'.</p></li>                              
 
                               <li><p class="funcsig">std::stats::rank (n : Numeric): Numeric</p>
                                 <p>Takes a single set and returns a set of ranks. Numbers with the same value receive the same rank, and the ranks might not be consecutive. To calculate the next rank, the number of rows with the same value is added to the current rank.</p></li>                              
