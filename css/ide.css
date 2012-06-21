@@ -73,6 +73,12 @@
     padding-bottom: 0px;
 }
 
+#page-body-section h1 {
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+
 #page-body-section .page-body-column-wide h1 {
     padding-top: 10px;
     padding-left: 10px;
