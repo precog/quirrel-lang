@@ -14,10 +14,6 @@ body {
     
 }
 
-html {
-    overflow-y: scroll;
-}
-
 @font-face {
     font-family: 'Abel';
     src: url('fonts/abel-regular-webfont.eot');
