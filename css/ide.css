@@ -4,6 +4,10 @@
     display: none;
 }
 
+body {
+    overflow-x: hidden !important;
+}
+
 #page-holder {
     width: 100%;
     top: 6px;
