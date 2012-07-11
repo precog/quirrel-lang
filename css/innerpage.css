@@ -384,8 +384,8 @@ h1 {
     margin-right: auto;
     margin-left: auto;
 }
-
 #footer-content p {
+    display: none;
     padding-top: 14px;
     font-family: Helvetica;
     font-size: 8pt;
