@@ -208,34 +208,30 @@ pageViewsForUser(12345)
 [{"userId":12345,"duration":57},{"userId":12345,"duration":161},{"userId":12345,"duration":7}, ...]
 				    </p>
 				</div>
-				<h1>PARTIALLY-APPLIED FUNCTIONS, PART I</h1>
-			        <p>In many cases, Quirrel knows how to compute the range of values for a parameter. If you call the function without supplying a value, Quirrel will evaluate the function at all possible values and merge the results into a single set.</p>
+				<h1>FORALL STATEMENTS, PART I</h1>
+			        <p>Instead of calling a function on a specific instance of a parameter, it is possible to evaluate a function at all possible values of a parameter in Quirrel by using a forall statement. Quirrel will then merge the results into a single set. </p>
 				<div class="body-code">
 				    <p>pageViews := //pageViews
-pageViewsForUser('userId) := 
-  {userId: 'userId, meanPageView: mean(pageViews.duration where pageViews.userId = 'userId)}
-pageViewsForUser
+forall 'userId
+{userId: 'userId, meanPageView: mean(pageViews.duration where pageViews.userId = 'userId)}
 
-[{"userId":12359,"meanPageView":83},{"userId":12347,"meanPageView":42}, ...]
+[{"userId":12356,"meanPageView":1},{"userId":12346,"meanPageView":118.25},...]
 				    </p>
 				</div>
-				<p>This query results in average page view durations for all users.</p>
-				<h1>PARTIALLY-APPLIED FUNCTIONS, PART II</h1>
-			        <p>A common idiom in Quirrel is to save the parameters of a function into an object that contains both the parameters, and the desired calculation.</p>
+				<p>This query results in a set with two columns.  The first will be called "userId" and contain each userId; the second will be called "meanPageView" and contain the average page view duration. </p>
+				<h1>FORALL STATEMENTS, PART II</h1>
+			        <p>Sometimes it is useful to filter or otherwise reuse the results of a forall statement.  When this is desired, the forall statement can be assigned to a variable.</p>
 				<div class="body-code">
-				    <p>clicks := //clicks
-views  := //views
-clickthroughRate('page) := 
-  {page: 'page, ctr: count(clicks where clicks.pageId = 'page) / 
-                     count(views where views.pageId = 'page)}
-clickthroughRate
+				    <p>pageViews := //pageViews
+averagePageViewsByUser := forall 'userId
+{userId: 'userId, meanPageView: mean(pageViews.duration where pageViews.userId = 'userId)}
+averagePageViewsByUser where averagePageViewsByUser.meanPageView > 100
 
-[{"page":"page-4","ctr":0.5555555555555555555555555555555556}, 
- {"page":"page-1","ctr":2.076923076923076923076923076923077}, ...]
+[{"userId":12345,"meanPageView":118.82926829268293},{"userId":12355,"meanPageView":133.25},...]
                                     
 				    </p>
 				</div>
-				<p>The final set contains objects that have a <em>page</em> field and a <em>ctr</em> field (the clickthrough rate for the specified page).</p>
+				<p>Calling averagePageViewsByUser returns the same set as the previous query, but filtering with the 'where' command narrows the set down to results where the average page view duration is greater than 100.</p>
 				<h1>AUGMENTATION</h1>
 			        <p>You can easily add more fields to objects, or more elements to arrays, with the <em>with</em> operator.</p>
 				<div class="body-code">
