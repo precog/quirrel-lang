@@ -213,7 +213,7 @@ pageViewsForUser(12345)
 				<div class="body-code">
 				    <p>pageViews := //pageViews
 forall 'userId
-{userId: 'userId, meanPageView: mean(pageViews.duration where pageViews.userId = 'userId)}
+  {userId: 'userId, meanPageView: mean(pageViews.duration where pageViews.userId = 'userId)}
 
 [{"userId":12356,"meanPageView":1},{"userId":12346,"meanPageView":118.25},...]
 				    </p>
@@ -224,7 +224,7 @@ forall 'userId
 				<div class="body-code">
 				    <p>pageViews := //pageViews
 averagePageViewsByUser := forall 'userId
-{userId: 'userId, meanPageView: mean(pageViews.duration where pageViews.userId = 'userId)}
+  {userId: 'userId, meanPageView: mean(pageViews.duration where pageViews.userId = 'userId)}
 averagePageViewsByUser where averagePageViewsByUser.meanPageView > 100
 
 [{"userId":12345,"meanPageView":118.82926829268293},{"userId":12355,"meanPageView":133.25},...]
