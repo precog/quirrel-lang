@@ -249,12 +249,11 @@ clicksWithDays
 				<div class="body-code">
 				    <p>customers := //customers
 orders := //orders
-fractionForUser('userId) :=
-  customers' = customers where customers.userId = 'userId 
-  orders' = orders where orders.userId = 'userId
+forall 'userId
+  customers' := customers where customers.userId = 'userId
+  orders' := orders where orders.userId = 'userId
   customers' ~ orders'
   orders.total / customers.income
-fractionForUser
 
 [0.0001458322727272727272727272727272727, ...]
 				    </p>
