@@ -131,9 +131,12 @@ true
                               
                               <li><p class="funcsig">distinct (s : Any): Any</p>
                                <p>Takes a single set and returns a set of the distinct (unique) values.</p></li>
-							  
-							  <li><p class="funcsig"> flatten(arr: Array) : set</p>
+							               <li><p class="funcsig">exists (s : Boolean): boolean</p>
+                               <p>Takes a set of booleans and returns a single boolean: true if there is at least one value in the set that satisfies the expresion, false otherwise.</p></li>
+							               <li><p class="funcsig"> flatten(arr: Array) : set</p>
                                <p>Takes a set of arrays and flattens them into a set where each value of the original array becomes an independent record in the resulting set.</p></li>   
+                                <li><p class="funcsig">forall (s : Boolean): boolean</p>
+                               <p>Takes a set of booleans and returns a single boolean: true if all of the values in the set satisfy the expresion, false otherwise.</p></li>
                               
                               <li><p class="funcsig">geometricMean (n : Numeric): Numeric</p>
                                 <p>Takes a single set and returns its geometric mean.</p></li>
@@ -191,10 +194,10 @@ true
                               <li><p class="funcsig">std::stats::logisticRegression(n1: Numeric, data: Any): Object</p>
                                 <p>Takes two sets: the first is the dependent variable and the second contains all the independent variables. The dependent variable must have numeric value 0 or value 1. Each schema in the data generates a field ("Model1", "Model2", etc.) in the resulting object. Each of these fields contains an array of size two. The first element of the array contains the coefficients of the model, inserted into the original schema. The second element of the array contains the constant term. For example, if the original data contains two schema: {"foo": Numeric, "bar": Numeric} and {"foo": Numeric}, the resulting object would have the form: {"Model1": [{"foo": Numeric, "bar", Numeric}, Numeric], "Model2": [{"foo": Numeric}, Numeric]}. </p></li>                              
 								
-								<li><p class="funcsig">std::stats::predictLinear(models: Object, data: Any): Object</p>
-                                <p>Takes two sets. The first is a set of models that must be of the form: {"Model1": [Any, Numeric], "Model2": [Any, Numeric], . . .}. The second is a set of data from which the result will be predicted. Consider a row of data. A single numeric value will be returned for each model whose schema is contained in the row's schema. For example, if the schema for Model2 isn't included in the row's schema, while the schemas for Model1 and Model3 are, the result for a given row will be of the form: {"Model1": Numeric, "Model3": Numeric}. </p></li>                              
+								<li><p class="funcsig">std::stats::predictLinear(data: Any, models: Object): Object</p>
+                                <p>Takes two sets. The first is a set of data from which the result will be predicted. The second is a set of models that must be of the form: {"Model1": [Any, Numeric], "Model2": [Any, Numeric], . . .}. Consider a row of data. A single numeric value will be returned for each model whose schema is contained in the row's schema. For example, if the schema for Model2 isn't included in the row's schema, while the schemas for Model1 and Model3 are, the result for a given row will be of the form: {"Model1": Numeric, "Model3": Numeric}. </p></li>                              
 
-								<li><p class="funcsig">std::stats::predictLogistic(models: Object, data: Any): Object</p>
+								<li><p class="funcsig">std::stats::predictLogistic(data: Any, models: Object): Object</p>
                                 <p>Identitical to predictLinear, except that the resulting numerics will be values between 0 and 1. </p></li>                              
 
                               <li><p class="funcsig">std::stats::rank(s : Any): Numeric</p>

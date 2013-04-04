@@ -118,6 +118,14 @@ square - 1
 </p>
 				</div>
 				<p>The load function returns all the data stored at the specified path, even if the values have differing types or schemas.</p>
+				<h1>LOADING DATA, PART II</h1>
+			        <p>It is possible to load multiple paths at once using path globbing. To do this, use the <em>*</em> syntax, as a wildcard in the path. </p>
+				<div class="body-code">
+				    <p>//summer_games/*
+[ {"Event": "foil team","Discipline": "Fencing","Medal": "Bronze","Athlete": "CROSTA, ...} ... ]
+</p>
+				</div>
+				<p>All the paths at the level of the <em>*</em> will be loaded. In the example above, all of the following will be loaded into the same set: //summer_games/athletes , //summer_games/historic_medals and //summer_games/london_medals.</p>
 				<h1>FILTERED DESCENT</h1>
 			        <p>Quirrel has direct support for JavaScript's <em>object dereference</em> and <em>array dereference</em> operators. These operations implicitly filter the dataset to those items that are contained in the specified field or array index.</p>
 				<div class="body-code">
@@ -279,6 +287,17 @@ clicksWithDays
 				    </p>
 				</div>
 				<p>In this query, a "day" field is added to the clicks objects.</p>
+				<h1>IF THEN ELSE</h1>
+			        <p><em>If-then-else</em> syntax provides a mechanism to return a specified result <em>if</em> a given boolean is true, and a different result <em>if</em> the boolean is false.  In the syntax, the else is always required.</p>
+				<div class="body-code">
+				    <p>conversions := //conversions
+conversions' := conversions with
+ {female: if conversions.customer.gender = "female" then 1 else 0}
+
+conversions'
+				    </p>
+				</div>
+				<p>This query will return the //conversions data set augmented with a new field: "female".  This field will be populated with 1's <em>if</em> conversions.customer.gender equals "female" and 0's <em>if</em> conversions.customer.gender has some other value.</p>
 				<h1>JOINS</h1>
 			        <p>The most complicated operator in Quirrel is the relate operator 'relate', which joins together sets that don't share identities, and allows you to perform operations on the joined sets.</p>
 				<div class="body-code">
