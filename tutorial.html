@@ -297,7 +297,19 @@ conversions' := conversions with
 conversions'
 				    </p>
 				</div>
-				<p>This query will return the //conversions data set augmented with a new field: "female".  This field will be populated with 1's <em>if</em> conversions.customer.gender equals "female" and 0's <em>if</em> conversions.customer.gender has some other value.</p>
+					<h1>QUANTIFIERS</h1>
+			        <p>The Quirrel data model supports heterogeneous data. So, Quirrel provides an existential quantifier <em>exists()</em> and a universal quantifier <em>forall()</em>. </p>
+				<div class="body-code">
+				    <p>clicks := //clicks
+exists(clicks.product.price = 7.99)
+				</div>
+				<p>This first query checks if any values of clicks.product.price are equal to 7.99.  If there is at least one <em>true</em> boolean, then the <em>exists()</em> function returns <em>true<em>. </p>
+				<div class="body-code">
+				    <p>clicks := //clicks
+forall(clicks.product.price <= 7.99)
+				    </p>
+				</div>
+				<p>The second query checks if if all the values of clicks.product.price are less than or equal to 7.99.  If all are <em>true</em> booleans, then the <em>forall()</em> function returns <em>true<em>. </p>
 				<h1>JOINS</h1>
 			        <p>The most complicated operator in Quirrel is the relate operator 'relate', which joins together sets that don't share identities, and allows you to perform operations on the joined sets.</p>
 				<div class="body-code">
