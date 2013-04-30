@@ -97,6 +97,7 @@ true
                             <p><a href = "#math">Math Function Reference</a></p>
                             <p><a href = "#string">String Function Reference</a></p>
                             <p><a href = "#datetime">DateTime Function Reference</a></p>
+                            <p><a href = "#type">Type Function Reference</a></p>
 
                             <a name = "operator"></a>
                             <h1>Operator Reference</h1>
@@ -147,8 +148,8 @@ true
                               <li><p class="funcsig">max (n : Numeric): Numeric</p>
                                 <p>Takes a single set of numeric events and returns the maximum value among all the events.</p></li>
 							  
-							  <li><p class="funcsig">maxTime(times: DateTime): DateTime</p>
-                                <p>Takes a set of DateTime values and returns the maximum.</p></li>
+							  <li><p class="funcsig">maxTime(times: <em>DateTime</em>): <em>DateTime</em></p>
+                                <p>Takes a set of <em>DateTime</em> values and returns the maximum.</p></li>
                               
                               <li><p class="funcsig">mean (n : Numeric): Numeric</p>
                                 <p>Takes a single set of numeric events and returns the arithmetic mean of all the values.</p></li>
@@ -156,8 +157,8 @@ true
                               <li><p class="funcsig">min (n : Numeric): Numeric</p>
                                 <p>Takes a single set of numeric events and returns the minimum of all the values.</p></li>
                               
-							   <li><p class="funcsig">minTime(times: DateTime): DateTime</p>
-                                <p>Takes a set of DateTime values and returns the minimum.</p></li>
+							   <li><p class="funcsig">minTime(times: <em>DateTime</em>): <em>DateTime</em></p>
+                                <p>Takes a set of <em>DateTime</em> values and returns the minimum.</p></li>
 							   
                               <li><p class="funcsig">stdDev (n : Numeric): Numeric</p>
                                 <p>Takes a single set of numeric events and returns the standard deviation from the arithmetic mean of all the values.</p></li>
@@ -274,7 +275,7 @@ true
                                 <p>Takes two sets of numeric events and returns a set of the first value raised to the power of the second value.</p></li>
 
                               <li><p class="funcsig">std::math::roundTo(n1: Numeric, n2: Numeric): Double</p>
-                                <p>Takes two sets of numeric events and rounds the first to the number of decimals specified in the second. A negative number in the 2nd field indicates decimals to the right. So, roundTo(1234, -2) would return 1200.</p></li>
+                                <p>Takes two sets of numeric events and rounds the first to the number of decimals specified in the second. A negative number in the 2nd field indicates decimals to the right. So, roundTo(1234, neg 2) would return 1200.</p></li>
 							  
 							  <li><p class="funcsig">std::math::round (n: Numeric): Double</p>
                                 <p>Takes a single set of numeric events and returns a set of each value rounded.</p></li>
@@ -438,8 +439,8 @@ true
 							<li><p class="funcsig">std::time::millisOfSecond (time : ISO8601): Int</p>
                                 <p>Takes a single set of ISO8601 strings and returns a set of the mills of the second.</p></li>
 								
-                              <li><p class="funcsig">std::time::maxTimeOf(d1: DateTime, d2: DateTime): DateTime</p>
-                                <p>Compares two DateTime values and returns the later.</p></li>
+                              <li><p class="funcsig">std::time::maxTimeOf(d1: <em>DateTime</em>, d2: <em>DateTime</em>): <em>DateTime</em></p>
+                                <p>Compares two <em>DateTime</em> values and returns the later.</p></li>
                               
                               <li><p class="funcsig">std::time::millisPlus(time : ISO8601, i : Int): String</p>
                                 <p>Takes a single set of ISO8601 strings and an integer, and returns a set of ISO8601 Strings plus the specified number of millis.</p></li>
@@ -447,8 +448,8 @@ true
                               <li><p class="funcsig">std::time::millisToISO (time : Long, tz : String): ISO8601</p>
                                 <p>Takes a set of long millis-since-epoch and a set of time zone strings (of the form "+04:00") and returns a set of ISO8601 strings. </p></li>
                               
-							  <li><p class="funcsig">std::time::minTimeOf(d1: DateTime, d2: DateTime): DateTime</p>
-                                <p>Compares two DateTime values and returns the earlier.</p></li>
+							  <li><p class="funcsig">std::time::minTimeOf(d1: <em>DateTime</em>, d2: <em>DateTime</em>): <em>DateTime</em></p>
+                                <p>Compares two <em>DateTime</em> values and returns the earlier.</p></li>
 							  
                               <li><p class="funcsig">std::time::minuteOfHour (time : ISO8601): Int</p>
                                 <p>Takes a single set of ISO8601 strings and returns a set of the minute of the hour.</p></li>
@@ -473,12 +474,18 @@ true
 
                               <li><p class="funcsig">std::time::quarter (time : ISO8601): Int</p>
                                 <p>Takes a single set of ISO8601 strings and returns a set of the quarter of year as an integer. January/February/March is quarter 1.</p></li>
+
+                                 <li><p class="funcsig">std::time::range ({start : <em>DateTime</em>, end : <em>DateTime</em>, step : <em>Period</em>}): Array</p>
+                                <p>Takes an object with start, end and step fields.  The start and end fields require a <em>DateTime</em>.  The step requires a <em>Period</em>.  A <em>Period</em> can be produced using the std::time::parse<em>Period</em>() function.  The range function returns an array of <em>DateTime</em>, inclusive of start and up to (possibly including) end, based on the interval provided in the step field.</p></li>
                               
                               <li><p class="funcsig">std::time::parseDateTime(s: String, s: String): ISO8601</p>
                                 <p>Takes a set of time strings and a set of time string formats. Returns a set of ISO8601 strings. If no time zone is specified, the default is UTC.</p></li>
 							 
-							  <li><p class="funcsig">std::time::parseDateTimeFuzzy(s: String): ISO8601</p>
-                                <p>Takes a set of time strings and makes a best effort to parse the string into a DateTime. If possible, returns a set of ISO8601 strings.</p></li>
+							               <li><p class="funcsig">std::time::parseDateTimeFuzzy(s: String): ISO8601</p>
+                                <p>Takes a set of time strings and makes a best effort to parse the string into a <em>DateTime</em>. If possible, returns a set of ISO8601 strings.</p></li>
+
+                                <li><p class="funcsig">std::time::parse<em>Period</em> (s : String): <em>Period</em></p>
+                                <p>Takes a string and returns a date <em>Period</em>. For information on how to construct a <em>Period</em> string, see <a href="http://en.wikipedia.org/wiki/ISO_8601#Durations">wikipedia</a></p></li>
                               
                               <li><p class="funcsig">std::time::season (time : ISO8601): String</p>
                                 <p>Takes a set of ISO8601 strings and returns a set of strings. According to the solstices and equinoxes, the seasons are "fall", "winter", "spring", "summer".</p></li>
